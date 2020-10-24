@@ -1,0 +1,39 @@
+﻿@page "/"
+
+<h1 class="display-3 my-4">
+    <span style="color: green;">Green</span>
+    <span style="color: gold;">Algo</span>
+</h1>
+
+
+<div>
+    <a href="create">Create new algorithm</a>
+</div>
+<div class="d-flex flex-column">
+    <h2>
+        Recent algorithms
+        <button class="btn" @onclick="Refresh">
+            <span class="oi oi-reload" title="reload" aria-hidden="true"></span>
+        </button>
+    </h2>
+    @if (algorithms == null)
+    {
+        <p>Loading...</p>
+    }
+    else
+    {
+        if (algorithms.Count() == 0)
+        {
+            <p>No algorithms found</p>
+        }
+        else
+        {
+            foreach (var algorithm in algorithms)
+            {
+                <div>
+                    <a href="algorithm/@algorithm.Id">@algorithm.Name</a>
+                </div>
+            }
+        }
+    }
+</div> 
